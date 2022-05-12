@@ -20,7 +20,10 @@ server.post("/api/register", (req, res) => {
 })
 
 server.post("/api/login", (req, res) => {
-
+    User.login(req.body)
+        .then(result => {
+            res.json(result)
+        })
 })
 
 module.exports = server;

@@ -4,7 +4,12 @@ module.exports = {
     login
 }
 
-const USERS = []
+const USERS = [
+    {
+        name: "foo",
+        password: "bar"
+    }
+]
 
 
 
@@ -24,6 +29,14 @@ async function createUser(object) {
 }
 
 
-async function login({ name }) {
-    return name
+async function login({name, password}) {
+    if (USERS.some(e => e.name === name && e.password === password)) {
+        return {
+            message: `Welcome ${name}`
+        }
+    } else {
+        return {
+            message: "Invalid Credentials"
+        }
+    }
 }
